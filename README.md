@@ -1,16 +1,32 @@
-# React + Vite
+# **FitSync**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FitSync is a program to help you consume water properly. Thanks to it, you can always track when and how much you drink. Using the application is very simple. To do this, just register in the application. You can change your account at any time by changing your photo, name and email address. Create cards with the amount of water you drank and the time you consumed it. This way, you can conveniently track your statistics.
 
-Currently, two official plugins are available:
+# **Technologies used:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Front-end**
 
-## React Compiler
+- HTML/CSS
+- JavaScript
+- REACT.js
+- ReduxToolkit
+- Axios
+- e.t.c.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+**Back-end**
 
-## Expanding the ESLint configuration
+- Node.js
+- Express.js
+- Mongoose
+- Swagger
+- e.t.c.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Utilites**
+
+- VSCode
+- Vite
+- Figma
+- Git/GitHub
+
+Our team hopes that with this app, you will never be
+dehydrated!
