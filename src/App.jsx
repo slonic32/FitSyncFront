@@ -9,6 +9,24 @@ import { Toaster } from "react-hot-toast";
 import SignInPage from "./pages/SignInPage/SignInPage";
 import SignUpPage from "./pages/SignUpPage/SignUpPage";
 
+import { Route, Routes } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { useSelector } from "react-redux";
+
+import { selectError, selectLoading } from "./redux/selectors.js";
+import Loader from "./components/Loader/Loader.jsx";
+import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute.jsx";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
+import Error from "./components/Error/Error.jsx";
+
+import { Toaster } from "react-hot-toast";
+
+const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
+const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage.jsx"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
+const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage/ErrorPage.jsx"));
+
 export default function App() {
   const dispatch = useDispatch();
   const { isRefreshing, isLoggedIn } = useAuth();
@@ -16,6 +34,9 @@ export default function App() {
   useEffect(() => {
     store.dispatch(refresh());
   }, [dispatch]);
+
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
   return isRefreshing ? (
     <b>Refreshing user...</b>
