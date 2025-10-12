@@ -1,0 +1,136 @@
+.welcomeWrapper {
+    background: var(--background);
+    border-radius: 30px;
+    padding: 118px 16px 67px 16px;
+    margin-bottom: 16px;
+}
+
+.text {
+    color: var(--main-text);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.28;
+    letter-spacing: 0.84px;
+    margin-bottom: 16px;
+}
+
+.mainTitle {
+    color: var(--main);
+    font-size: 38px;
+    font-weight: var(--bold);
+    line-height: 38px;
+    letter-spacing: -0.38px;
+    margin-bottom: 32px;
+}
+
+.linkWrapper {
+    display: flex;
+    gap: 10px;
+}
+
+.linkTracker {
+    width: 116px;
+    display: flex;
+    padding: 14px 19px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    color: var(--main);
+    text-align: center;
+    font-size: 14px;
+    font-weight: var(--bold);
+    line-height: 1.28;
+    letter-spacing: -0.14px;
+    background: var(--accent);
+    transition: background-color var(--animation);
+}
+
+.linkTracker:hover,
+.linkTracker:active,
+.linkTracker:focus {
+    background-color: var(--hover);
+}
+
+.linkSignIn {
+    width: 104px;
+    display: flex;
+    padding: 14px 28px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: var(--main);
+    text-align: center;
+    font-size: 13px;
+    font-weight: var(--bold);
+    line-height: 1.28;
+    letter-spacing: -0.14px;
+    border-radius: 30px;
+    border: 1px solid var(--main);
+    transition:
+        border var(--animation),
+        color var(--animation);
+}
+
+.linkSignIn:hover,
+.linkSignIn:focus,
+.linkSignIn:active {
+    border: 1px solid var(--hover);
+    color: var(--hover);
+}
+
+@media screen and (min-width: 768px) {
+    .welcomeWrapper {
+        height: 498px;
+        padding-right: 93px;
+        padding-left: 64px;
+        padding-top: 106px;
+        padding-bottom: 50px;
+    }
+
+    .text {
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.96px;
+    }
+
+    .mainTitle {
+        font-size: 64px;
+        line-height: 70px;
+        letter-spacing: -0.64px;
+    }
+
+    .linkWrapper {
+        gap: 10px;
+    }
+
+    .linkTracker {
+        padding: 18px 40px;
+        width: 169px;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: -0.16px;
+    }
+
+    .linkSignIn {
+        width: 135px;
+        padding: 18px 40px;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .mainTitle {
+        font-size: 80px;
+        line-height: 76px;
+        letter-spacing: -0.8px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .welcomeWrapper {
+        height: 736px;
+        padding: 188px 64px 188px 61px;
+        margin: 0;
+    }
+}

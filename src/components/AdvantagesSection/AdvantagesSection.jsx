@@ -1,8 +1,17 @@
 import css from './AdvantagesSection.module.css';
+import fitnessDesktop from '../../assets/desktop/fitness.jpg';
 
 export default function AdvantagesSection() {
     return (
-        <div className={css.section}>
+        <div
+            className={css.section}
+            style={{
+                backgroundImage: `url(${fitnessDesktop})`,
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center'
+            }}
+        >
             <div className={css.customersBox}>
                 <ul className={css.customerImg}>
                     <li className={css.item}>
@@ -30,10 +39,10 @@ export default function AdvantagesSection() {
                         <p className={css.text}>Fitness tracking</p>
                     </li>
                     <li className={css.benefitsItem}>
-                        <p className={css.textBlack}>Progress monitoring</p>
+                        <p className={css.textBlack}>Water monitoring</p>
                     </li>
                     <li className={css.benefitsItem}>
-                        <p className={css.textBlack}>Personalized goals</p>
+                        <p className={css.textBlack}>Progress analytics</p>
                     </li>
                 </ul>
             </div>
