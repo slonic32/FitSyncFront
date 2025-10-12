@@ -1,9 +1,20 @@
 .section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-image: url('../../assets/mobile/fitness.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
     height: 353px;
     border-radius: 30px;
     padding: 0 16px 32px 16px;
     position: relative;
+
+    @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+        background-image: url('../../assets/mobile/fitness_2x.jpg');
+    }
 }
 
 .customersBox {
@@ -141,6 +152,15 @@ span {
         padding-left: 32px;
         padding-right: 32px;
         padding-bottom: 32px;
+
+        background-image: url('../../assets/tablet/fitness.jpg');
+
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url('../../assets/tablet/fitness_2x.jpg');
+        }
     }
 
     .customersBox {
@@ -212,6 +232,15 @@ span {
         padding-bottom: 64px;
         min-width: 672px;
         height: 736px;
+
+        background-image: url('../../assets/desktop/girl.jpg');
+
+        @media (min-device-pixel-ratio: 2),
+        (-webkit-min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+            background-image: url('../../assets/desktop/fitness_2x.jpg');
+        }
     }
 
     .customersBox {
