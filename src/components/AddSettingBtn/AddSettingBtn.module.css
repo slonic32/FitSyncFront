@@ -1,0 +1,11 @@
+.btn {
+  border: none;
+  background-color: inherit;
+  color: var(--main);
+  display: flex;
+  gap: 8px;
+}
+
+.btn:hover {
+  color: var(--main-inherit);
+}

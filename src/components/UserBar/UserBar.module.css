@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 157px;
+  max-width: 170px;
+  border: none;
+  background-color: var(--main);
+  color: var(--main-white);
+  border-radius: 30px;
+  padding: 6px 12px;
+}
+
+.img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}

@@ -1,0 +1,13 @@
+.title {
+  color: var(--main);
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: var(--bold);
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    margin-bottom: 20px;
+  }
+}

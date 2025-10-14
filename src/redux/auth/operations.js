@@ -1,5 +1,8 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { BACKEND_HOST } from "../../config/backend";
+
+axios.defaults.baseURL = BACKEND_HOST + "/api/";
 
 // add JWT
 export function setAuthHeader(token) {
@@ -21,6 +24,9 @@ export const register = createAsyncThunk(
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
+      if (error.response?.data?.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -38,6 +44,9 @@ export const login = createAsyncThunk(
 
       return res.data;
     } catch (error) {
+      if (error.response?.data?.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -49,6 +58,9 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
     // remove  token from the HTTP header
     clearAuthHeader();
   } catch (error) {
+    if (error.response?.data?.message) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -72,6 +84,9 @@ export const refresh = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
 
     return res.data;
   } catch (error) {
+    if (error.response?.data?.message) {
+      return thunkAPI.rejectWithValue(error.response.data.message);
+    }
     return thunkAPI.rejectWithValue(error.message);
   }
 });
@@ -88,6 +103,9 @@ export const editUser = createAsyncThunk(
 
       return res.data;
     } catch (error) {
+      if (error.response?.data?.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }

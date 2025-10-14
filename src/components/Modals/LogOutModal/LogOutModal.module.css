@@ -1,0 +1,89 @@
+.modalBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #323f47;
+}
+
+.modalBox p {
+  margin-bottom: 28px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #323f47;
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 12px;
+  width: 304px;
+  height: 46px;
+  background: #9be1a0;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #323f47;
+  cursor: pointer;
+}
+
+.btnCancel {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 12px;
+  width: 304px;
+  height: 46px;
+  background: #f0eff4;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.28571;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: rgba(50, 63, 71, 0.3);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #87d28d;
+}
+
+.btnCancel:hover {
+  color: var(--main);
+}
+
+@media (min-width: 768px) {
+  .btnBox {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .btn,
+  .btnCancel {
+    border-radius: 15px;
+    padding: 14px;
+    width: 173px;
+    height: 46px;
+  }
+}
