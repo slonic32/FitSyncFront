@@ -1,0 +1,132 @@
+/* Modal styles */
+.Modal {
+  margin: 60px auto;
+  border-radius: 15px;
+  padding: 40px 20px;
+  width: 300px;
+  height: 520px;
+  box-shadow: 0 4px 50px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+  position: absolute;
+  inset: inherit;
+  overflow: hidden;
+  outline: none;
+}
+/* ==================== */
+.btnWater {
+  width: 22px;
+  height: 22px;
+
+  border: none;
+  background: inherit;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+.btnDelete {
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  background: inherit;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+.btnSetting {
+  width: 24px;
+  height: 24px;
+
+  border: none;
+  background: inherit;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+/* ========================== */
+.modalSetting {
+  composes: Modal;
+  /* height: 1302px; */
+  overflow-y: auto;
+  height: 100%;
+
+  outline: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 375.9px) {
+  .modalDelete {
+    composes: Modal;
+    margin: auto;
+    padding: 40px 14px;
+    width: 344px;
+    height: 267px;
+  }
+}
+
+@media (min-width: 375px) {
+  .modalDelete {
+    composes: Modal;
+    margin: auto;
+    padding: 40px 14px;
+    width: 344px;
+    height: 267px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767.9px) {
+  .modalSetting {
+    composes: Modal;
+    margin: 40px auto;
+    padding: 40px;
+
+    /* height: 1336px; */
+    height: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .Modal {
+    margin: auto;
+    padding: 40px;
+    width: 518px;
+    height: 555px;
+  }
+  .btnWater {
+    width: 28px;
+    height: 28px;
+    top: 25px;
+    right: 25px;
+  }
+  .btnDelete {
+    width: 28px;
+    height: 28px;
+  }
+  .modalDelete {
+    /* composes: Modal; */
+    padding: 40px;
+    width: 516px;
+    height: 244px;
+  }
+  .btnSetting {
+    width: 28px;
+    height: 28px;
+
+    top: 35px;
+    right: 35px;
+  }
+  .modalSetting {
+    /* composes: Modal; */
+    margin: 40px auto;
+    padding: 40px;
+    width: 648px;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  @media (min-width: 1440px) {
+    .modalSetting {
+      width: 920px;
+    }
+  }
+}
