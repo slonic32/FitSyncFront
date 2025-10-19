@@ -1,0 +1,175 @@
+.title {
+  width: 248px;
+  color: var(--main);
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.01em;
+  font-weight: var(--bold);
+  margin-bottom: 10px;
+}
+.waterForm {
+  height: 490px;
+  border-radius: 30px;
+}
+.formWrapper {
+  position: relative;
+}
+.waterTitle {
+  color: var(--main-text);
+  font-size: 16px;
+  font-weight: var(--bold);
+  line-height: 1.25;
+  letter-spacing: -0.16px;
+  margin-bottom: 20px;
+}
+.waterAmount {
+  color: var(--main);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.28;
+  letter-spacing: -0.14px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.wrapperAmount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.btnAmount {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  height: 40px;
+}
+.btnAmount svg {
+  width: 100%;
+  height: 100%;
+}
+.btnAmount:disabled svg path,
+.btnAmount:disabled svg rect {
+  stroke: #323f4750;
+}
+.valueAmount {
+  padding: 11px 20px;
+  height: 40px;
+  background-color: var(--main);
+  border-radius: 30px;
+  color: var(--main-white);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.28;
+}
+.wrapperField {
+  display: flex;
+  flex-direction: column;
+}
+.labelTime {
+  color: var(--main-text);
+  font-size: 14px;
+  line-height: 1.28;
+  letter-spacing: -0.14px;
+  margin-bottom: 8px;
+}
+.inputAmount {
+  border-radius: 15px;
+  border: 1px solid rgba(47, 47, 47, 0.15);
+  width: 100%;
+  max-width: 343px;
+  padding: 14px 16px;
+  margin-bottom: 24px;
+  color: var(--main-text);
+  font-size: 14px;
+  line-height: 1.25;
+  letter-spacing: -0.14px;
+}
+.labelValue {
+  color: var(--main-text);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.16px;
+  margin-bottom: 8px;
+}
+.btnSubmit {
+  width: 116px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: none;
+  background-color: var(--accent);
+  color: var(--main);
+  font-size: 14px;
+  font-weight: var(--bold);
+  line-height: 1.28;
+  letter-spacing: -0.14px;
+  transition: var(--animation);
+}
+.btnSubmit:hover {
+  background-color: var(--hover);
+}
+.error {
+  position: absolute;
+  color: var(--error);
+  font-size: 12px;
+  top: 376px;
+  left: 26px;
+}
+@media screen and (min-width: 768px) {
+  .title {
+    width: 347px;
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 20px;
+  }
+  .waterForm {
+    max-width: 518px;
+    height: 474px;
+  }
+  .waterTitle {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.18px;
+  }
+  .waterAmount {
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: -0.16px;
+  }
+  .btnAmount {
+    width: 43px;
+    height: 43px;
+  }
+  .valueAmount {
+    height: 43px;
+    font-size: 15px;
+    line-height: 1.49;
+  }
+  .labelTime {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.16px;
+  }
+  .inputAmount {
+    max-width: 438px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.16px;
+  }
+  .labelValue {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.18px;
+  }
+  .btnSubmit {
+    padding: 18px 50px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.16;
+  }
+}
