@@ -1,0 +1,23 @@
+.wrap {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border: none;
+  color: var(--main);
+}
+
+.iconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--accent);
+  color: var(--main);
+  border-radius: 50%;
+}
+
+.wrap:hover .iconWrap {
+  background-color: var(--main);
+  color: var(--main-white);
+}

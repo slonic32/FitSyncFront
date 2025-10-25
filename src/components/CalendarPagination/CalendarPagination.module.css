@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  min-width: 140px;
+}
+.btn {
+  border: none;
+  background-color: transparent;
+}
+
+.btn:hover {
+  scale: 1.1;
+}
+
+.span {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  color: var(--main);
+}
+.arrow {
+  stroke: var(--main);
+  stroke-width: 1;
+}
+.pieIcon {
+  stroke-opacity: 0.5;
+}
+
+@media screen and (min-width: 375px) {
+  .wrapper {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 170px;
+  }
+}

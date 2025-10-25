@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  width: 180px;
+  padding: 18px;
+  border-radius: 30px;
+  background-color: var(--main);
+  color: var(--main-white);
+}
+
+.container:hover {
+  color: var(--accent);
+}

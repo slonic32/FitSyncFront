@@ -1,0 +1,11 @@
+.date {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--main);
+}
+
+@media screen and (min-width: 768px) {
+  .date {
+    font-size: 28px;
+  }
+}
