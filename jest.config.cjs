@@ -5,8 +5,11 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'jsx'],
   setupFilesAfterEnv: ['@testing-library/jest-dom', '<rootDir>/jest.setup.js'],
+  
   moduleNameMapper: {
     '\\.module\\.css$': '<rootDir>/__mocks__/styleMock.js',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+
+    '\\.(jpg|jpeg|png|gif|webp|svg)$': '<rootDir>/__mocks__/fileMock.js',
   },
 };
