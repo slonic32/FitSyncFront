@@ -20,7 +20,7 @@ jobs:
       - name: Run tests
         run: npm run test
 
-      - name: notify vercel
-        uses: vercel/repository-dispatch/actions/status@v1
+      - name: "notify vercel"
+        uses: "vercel/repository-dispatch/actions/status@v1"
         with:
           name: "Vercel - fit-sync-front: test"
