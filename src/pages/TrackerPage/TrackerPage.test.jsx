@@ -1,19 +1,19 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
-import { MemoryRouter } from 'react-router-dom';
-import { thunk } from 'redux-thunk'; 
+import { MemoryRouter } from "react-router-dom";
+import { thunk } from "redux-thunk";
 
 import TrackerPage from "./TrackerPage";
 
-jest.mock('../../components/WaterMainInfo/WaterMainInfo', () => {
+jest.mock("../../components/WaterMainInfo/WaterMainInfo", () => {
   return {
     __esModule: true,
     default: () => <div>MockWaterMainInfo</div>,
   };
 });
 
-jest.mock('../../components/WaterDetailedInfo/WaterDetailedInfo', () => {
+jest.mock("../../components/WaterDetailedInfo/WaterDetailedInfo", () => {
   return {
     __esModule: true,
     default: () => <div>MockWaterDetailedInfo</div>,
@@ -29,15 +29,15 @@ describe("TrackerPage", () => {
   beforeEach(() => {
     store = mockStore({
       auth: {
-        user: { 
-          name: 'TestUser', 
-          dailyWaterNorm: 2000 
-        } 
+        user: {
+          name: "TestUser",
+          dailyWaterNorm: 2000,
+        },
       },
       water: {
         day: "2025-10-26",
         month: "October",
-        dayWater: [] 
+        dayWater: [],
       },
     });
 
@@ -46,24 +46,24 @@ describe("TrackerPage", () => {
 
   test("renders TrackerPage content", () => {
     render(
-      <MemoryRouter> 
+      <MemoryRouter>
         <Provider store={store}>
           <TrackerPage />
         </Provider>
       </MemoryRouter>
     );
 
-    expect(screen.getByText("MockWaterMainInfo")).toBeInTheDocument();
-    expect(screen.getByText("MockWaterDetailedInfo")).toBeInTheDocument();
+    expect(screen.getByText("MockWaterMainInfo2")).toBeInTheDocument();
+    expect(screen.getByText("MockWaterDetailedInfo2")).toBeInTheDocument();
 
     const actions = store.getActions();
 
     expect(actions.length).toBe(2);
 
-    expect(typeof actions[0]).toBe('object');
-    expect(actions[0].type).toBe('water/chooseDay/pending');
+    expect(typeof actions[0]).toBe("object");
+    expect(actions[0].type).toBe("water/chooseDay/pending");
 
-    expect(typeof actions[1]).toBe('object');
-    expect(actions[1].type).toBe('water/chooseMonth/pending');
+    expect(typeof actions[1]).toBe("object");
+    expect(actions[1].type).toBe("water/chooseMonth/pending");
   });
 });
