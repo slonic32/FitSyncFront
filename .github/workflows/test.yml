@@ -1,4 +1,4 @@
-name: Test
+name: test
 
 on:
   pull_request:
@@ -23,4 +23,4 @@ jobs:
       - name: notify vercel
         uses: vercel/repository-dispatch/actions/status@v1
         with:
-          name: Vercel - fit-sync-front: Test
+          name: "Vercel - fit-sync-front: test"
