@@ -1,0 +1,123 @@
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--main-white);
+  color: var(--main);
+  width: min(920px, 94vw);
+  max-height: 86vh;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--main);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px 16px;
+  flex: 1;
+  min-height: 0; /* allow children to shrink for scrolling */
+}
+
+.messages {
+  overflow: auto;
+  padding: 16px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+.msgUser {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.msgBot {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.bubble {
+  background: var(--main-white);
+  border: 1px solid rgba(0,0,0,0.08);
+  color: var(--main);
+  padding: 10px 12px;
+  border-radius: 12px;
+  max-width: 80%;
+}
+
+.inputRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.uploadLabel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent);
+  color: var(--main);
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.fileInput {
+  display: none;
+}
+
+.textInput {
+  flex: 1;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 20px;
+  padding: 10px 14px;
+  outline: none;
+  color: var(--main);
+}
+
+.sendBtn {
+  background-color: var(--accent);
+  color: var(--main);
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.sendBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
