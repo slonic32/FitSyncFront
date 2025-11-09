@@ -3,6 +3,16 @@ jest.mock('react-modal', () => ({
     
     setAppElement: () => null, 
   }));
+
+jest.mock('@google/generative-ai', () => ({
+  GoogleGenerativeAI: jest.fn().mockImplementation(() => ({
+    getGenerativeModel: jest.fn().mockReturnValue({
+      generateContent: jest.fn(),
+    }),
+  })),
+  HarmBlockThreshold: {},
+  HarmCategory: {},
+}));
   
   import { TextEncoder, TextDecoder } from 'util';
   
