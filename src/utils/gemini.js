@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from '@google/generative-ai';
 
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+// Hardcoded Gemini API key (replaced env variable)
+const apiKey = 'AIzaSyAnMllaN9e2JfR5p6iRwWBVIE0T0q0QCJY';
 
 if (!apiKey) {
   // Intentionally not throwing to avoid crashing UI; surface readable error instead
@@ -78,7 +79,7 @@ async function generateWithFallbacks(contents, options = {}) {
 export async function analyzeMealWithImage({ file, userContext }) {
   const model = getHealthModel();
   if (!model) {
-    return { error: 'Missing VITE_GEMINI_API_KEY. Add it to your .env.' };
+    return { error: 'Missing Gemini API key. Please configure the API key in gemini.js' };
   }
 
   try {
@@ -110,7 +111,7 @@ If uncertain, state assumptions.`;
           ],
         },
       ],
-      { }
+      {}
     );
 
     const text = result?.response?.text?.();
@@ -161,7 +162,7 @@ function normalizeGeminiError(err) {
     // Prefer API error messages if present
     const apiMsg = err?.error?.message || err?.response?.error?.message;
     if (apiMsg) return apiMsg;
-  } catch {}
+  } catch { }
   const text = String(err?.message || err);
   return `Gemini error: ${text}`;
 }
