@@ -110,6 +110,17 @@ export default function WaterModal({ id, closeModal }) {
           </button>
         </div>
         <div className={css.wrapperField}>
+          <label className={css.labelValue} htmlFor="value">
+            Enter the value of the water used:
+          </label>
+          <input
+            {...register('value')}
+            className={css.inputAmount}
+            type="number"
+            name="value"
+            id="value"
+            onChange={(e) => setValue('value', Number(e.target.value))}
+          />
           <div>
             <label className={css.labelTime} htmlFor="time">
               Recording time:
@@ -122,17 +133,6 @@ export default function WaterModal({ id, closeModal }) {
               id="time"
             />
           </div>
-          <label className={css.labelValue} htmlFor="value">
-            Enter the value of the water used:
-          </label>
-          <input
-            {...register('value')}
-            className={css.inputAmount}
-            type="number"
-            name="value"
-            id="value"
-            onChange={(e) => setValue('value', Number(e.target.value))}
-          />
           {errors.value && (
             <span className={css.error}>{errors.value.message}</span>
           )}
