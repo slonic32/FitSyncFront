@@ -20,10 +20,12 @@ jest.mock('../../components/WaterDetailedInfo/WaterDetailedInfo', () => {
   };
 });
 
-jest.mock('../../utils/gemini', () => ({
-  analyzeMealWithImage: jest.fn(),
-  chatHealthGuide: jest.fn(),
-}));
+jest.mock('../../components/HealthChat/HealthChat', () => {
+  return {
+    __esModule: true,
+    default: () => null,
+  };
+});
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
