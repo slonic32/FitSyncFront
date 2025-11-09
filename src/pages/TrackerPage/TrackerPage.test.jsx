@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import { MemoryRouter } from 'react-router-dom';
-import { thunk } from 'redux-thunk'; 
+import { thunk } from 'redux-thunk';
 
 import TrackerPage from "./TrackerPage";
 
@@ -20,6 +20,11 @@ jest.mock('../../components/WaterDetailedInfo/WaterDetailedInfo', () => {
   };
 });
 
+jest.mock('../../utils/gemini', () => ({
+  analyzeMealWithImage: jest.fn(),
+  chatHealthGuide: jest.fn(),
+}));
+
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
@@ -29,15 +34,15 @@ describe("TrackerPage", () => {
   beforeEach(() => {
     store = mockStore({
       auth: {
-        user: { 
-          name: 'TestUser', 
-          dailyWaterNorm: 2000 
-        } 
+        user: {
+          name: 'TestUser',
+          dailyWaterNorm: 2000
+        }
       },
       water: {
         day: "2025-10-26",
         month: "October",
-        dayWater: [] 
+        dayWater: []
       },
     });
 
@@ -46,7 +51,7 @@ describe("TrackerPage", () => {
 
   test("renders TrackerPage content", () => {
     render(
-      <MemoryRouter> 
+      <MemoryRouter>
         <Provider store={store}>
           <TrackerPage />
         </Provider>
