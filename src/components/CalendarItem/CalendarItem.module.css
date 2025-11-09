@@ -12,8 +12,20 @@
   color: #2f2f2f96;
 }
 
-.profitLow {
-  background-color: #323f4738;
+.profitGrey {
+  background-color: #d3d3d3;
+}
+
+.profitRed {
+  background-color: #ff6b6b;
+}
+
+.profitYellow {
+  background-color: #ffd93d;
+}
+
+.profitGreen {
+  background-color: #6bcf7f;
 }
 
 .dayBtn:hover {

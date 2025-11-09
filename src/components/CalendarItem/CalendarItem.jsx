@@ -22,7 +22,15 @@ export default function CalendarItem({ day, profit = 0 }) {
   }
 
   const getButtonClass = (profit) => {
-    return profit < 100 ? `${css.dayBtn} ${css.profitLow}` : css.dayBtn;
+    if (profit === 0) {
+      return `${css.dayBtn} ${css.profitGrey}`;
+    } else if (profit < 50) {
+      return `${css.dayBtn} ${css.profitRed}`;
+    } else if (profit >= 50 && profit <= 80) {
+      return `${css.dayBtn} ${css.profitYellow}`;
+    } else {
+      return `${css.dayBtn} ${css.profitGreen}`;
+    }
   };
 
   function handleClick() {
