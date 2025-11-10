@@ -22,3 +22,5 @@ export const selectAvatar = state => {
 export function selectAuthError(state) {
   return state.auth.error;
 }
+
+export const selectDaylyNorm = state => state.auth.user.dailyWaterNorm;

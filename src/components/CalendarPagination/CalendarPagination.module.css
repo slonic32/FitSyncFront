@@ -1,8 +1,7 @@
 .wrapper {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
-  flex-direction: column;
 }
 .container {
   display: flex;
@@ -23,23 +22,40 @@
   font-weight: 700;
   line-height: 18px;
   color: var(--main);
+  letter-spacing: -0.14px;
 }
 .arrow {
   stroke: var(--main);
   stroke-width: 1;
 }
 .pieIcon {
-  stroke-opacity: 0.5;
+  stroke-opacity: 0.4;
+  fill: none;
 }
 
-@media screen and (min-width: 375px) {
-  .wrapper {
-    flex-direction: row;
-  }
+.pieIcon:hover,
+.pieIcon:active {
+  stroke-opacity: 1;
+}
+
+.pieIconPressed {
+  stroke-opacity: 1;
+  fill: none;
 }
 
 @media screen and (min-width: 768px) {
   .container {
     min-width: 170px;
   }
+  .span {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.16px;
+  }
+}
+
+.chartButton {
+  border: none;
+  width: 24px;
+  height: 24px;
 }

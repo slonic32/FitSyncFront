@@ -1,11 +1,11 @@
-import Modal from 'react-modal';
-import css from './Modal.module.css';
-import { AiOutlineClose } from 'react-icons/ai';
+import Modal from "react-modal";
+import css from "./Modal.module.css";
+import { AiOutlineClose } from "react-icons/ai";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(100, 100, 100, 0.55)',
+    backgroundColor: "rgba(100, 100, 100, 0.55)",
   },
 };
 
