@@ -1,16 +1,20 @@
-import { useState } from 'react';
-import CalendarPagination from '../CalendarPagination/CalendarPagination';
-import Calendar from '../Calendar/Calendar';
-import css from './MonthInfo.module.css';
+import { useState } from "react";
+import CalendarPagination from "../CalendarPagination/CalendarPagination";
+import Calendar from "../Calendar/Calendar";
+import css from "./MonthInfo.module.css";
 
-import { selectMonth } from '../../redux/water/selectors';
-import { MonthToStr, dateFromStrMonth } from '../../utils/dates';
-import { useSelector } from 'react-redux';
+import { selectMonth, selectMonthWater } from "../../redux/water/selectors";
+import { MonthToStr, dateFromStrMonth } from "../../utils/dates";
+import { useSelector } from "react-redux";
+import WaterChart from "../WaterChart/WaterChart";
+import { selectDaylyNorm } from "../../redux/auth/selectors";
 
 export default function MonthInfo() {
   const month = useSelector(selectMonth);
 
   const [selectedDate, setSelectedDate] = useState(dateFromStrMonth(month));
+
+  const [showChart, setShowChart] = useState(false);
 
   return (
     <>
@@ -19,9 +23,12 @@ export default function MonthInfo() {
         <CalendarPagination
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
+          showChart={showChart}
+          setShowChart={setShowChart}
         />
       </div>
-      <Calendar selectedDate={selectedDate} />
+      {!showChart && <Calendar selectedDate={selectedDate} />}
+      {showChart && <WaterChart selectedDate={selectedDate} />}
     </>
   );
 }

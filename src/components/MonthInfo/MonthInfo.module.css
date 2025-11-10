@@ -6,6 +6,20 @@
   align-items: center;
 }
 .month {
-  font-size: 28px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.2px;
   color: var(--main);
+}
+
+@media screen and (min-width: 768px) {
+  .month {
+    font-size: 28px;
+    font-style: normal;
+
+    line-height: 32px;
+    letter-spacing: -0.28px;
+  }
 }
