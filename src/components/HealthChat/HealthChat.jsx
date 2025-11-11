@@ -1,14 +1,14 @@
-import { useMemo, useRef, useState } from 'react';
-import Modal from 'react-modal';
-import { analyzeMealWithImage, chatHealthGuide } from '../../utils/gemini';
-import css from './HealthChat.module.css';
+import { useMemo, useRef, useState } from "react";
+import Modal from "react-modal";
+import { analyzeMealWithImage, chatHealthGuide } from "../../utils/chatAPI.js";
+import css from "./HealthChat.module.css";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 export default function HealthChat({ isOpen, onRequestClose }) {
   const [messages, setMessages] = useState([]);
   const [pending, setPending] = useState(false);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [file, setFile] = useState(null);
   const bottomRef = useRef(null);
 
@@ -23,7 +23,7 @@ export default function HealthChat({ isOpen, onRequestClose }) {
       // Append user message
       const newMessages = [...messages];
       if (input.trim()) {
-        newMessages.push({ role: 'user', parts: [{ text: input.trim() }] });
+        newMessages.push({ role: "user", parts: [{ text: input.trim() }] });
       }
 
       setMessages(newMessages);
@@ -31,27 +31,37 @@ export default function HealthChat({ isOpen, onRequestClose }) {
       let response;
       try {
         if (file) {
-          response = await analyzeMealWithImage({ file, userContext: input.trim() });
+          response = await analyzeMealWithImage({
+            file,
+            userContext: input.trim(),
+          });
           setFile(null);
         } else {
           response = await chatHealthGuide(newMessages);
         }
       } catch (err) {
-        response = { error: `Unexpected error: ${String(err?.message || err)}` };
+        response = {
+          error: `Unexpected error: ${String(err?.message || err)}`,
+        };
       }
 
-      if (response?.error) newMessages.push({ role: 'model', parts: [{ text: response.error }] });
-      else newMessages.push({ role: 'model', parts: [{ text: response.text }] });
+      if (response?.error)
+        newMessages.push({ role: "model", parts: [{ text: response.error }] });
+      else
+        newMessages.push({ role: "model", parts: [{ text: response.text }] });
       setMessages([...newMessages]);
-      setInput('');
-      setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: 'smooth' }), 50);
+      setInput("");
+      setTimeout(
+        () => bottomRef.current?.scrollIntoView({ behavior: "smooth" }),
+        50
+      );
     } finally {
       setPending(false);
     }
   }
 
   function onClose() {
-    setInput('');
+    setInput("");
     setFile(null);
     setPending(false);
     onRequestClose?.();
@@ -66,13 +76,22 @@ export default function HealthChat({ isOpen, onRequestClose }) {
     >
       <div className={css.header}>
         <h3>Health Guide</h3>
-        <button className={css.closeBtn} onClick={onClose} aria-label="Close chat">×</button>
+        <button
+          className={css.closeBtn}
+          onClick={onClose}
+          aria-label="Close chat"
+        >
+          ×
+        </button>
       </div>
 
       <div className={css.body}>
         <div className={css.messages}>
           {messages.map((m, idx) => (
-            <div key={idx} className={m.role === 'user' ? css.msgUser : css.msgBot}>
+            <div
+              key={idx}
+              className={m.role === "user" ? css.msgUser : css.msgBot}
+            >
               <div className={css.bubble}>
                 {m.parts?.map((p, i) => (
                   <p key={i}>{p.text}</p>
@@ -102,13 +121,15 @@ export default function HealthChat({ isOpen, onRequestClose }) {
             className={css.textInput}
           />
 
-          <button type="submit" className={css.sendBtn} disabled={!canSend || pending}>
-            {pending ? '...' : 'Send'}
+          <button
+            type="submit"
+            className={css.sendBtn}
+            disabled={!canSend || pending}
+          >
+            {pending ? "..." : "Send"}
           </button>
         </form>
       </div>
     </Modal>
   );
 }
-
-
