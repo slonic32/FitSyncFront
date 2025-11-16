@@ -5,14 +5,45 @@ import css from "./HealthChat.module.css";
 
 Modal.setAppElement("#root");
 
+const SUGGESTED_QUESTIONS = [
+  "What are the calories in this meal?",
+  "What is the macronutrient breakdown?",
+  "How much water should I drink to stay properly hydrated?",
+  "What is my recommended daily calorie intake?",
+  "Is this meal healthy for my dietary goals?",
+  "How much protein should I consume today?",
+  "What foods are good sources of healthy fats?",
+  "How can I balance my meals throughout the day?",
+];
+
 export default function HealthChat({ isOpen, onRequestClose }) {
   const [messages, setMessages] = useState([]);
   const [pending, setPending] = useState(false);
   const [input, setInput] = useState("");
   const [file, setFile] = useState(null);
   const bottomRef = useRef(null);
+  const fileInputRef = useRef(null);
 
   const canSend = useMemo(() => input.trim().length > 0 || file, [input, file]);
+
+  function handleFileSelect(e) {
+    const selectedFile = e.target.files?.[0] || null;
+    if (selectedFile) {
+      setFile(selectedFile);
+    }
+  }
+
+  function handleRemoveFile() {
+    setFile(null);
+    // Reset the file input so the same file can be selected again
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  }
+
+  function handleSuggestionClick(question) {
+    setInput(question);
+  }
 
   async function handleSend(e) {
     e?.preventDefault?.();
@@ -64,6 +95,7 @@ export default function HealthChat({ isOpen, onRequestClose }) {
     setInput("");
     setFile(null);
     setPending(false);
+    setMessages([]);
     onRequestClose?.();
   }
 
@@ -87,6 +119,23 @@ export default function HealthChat({ isOpen, onRequestClose }) {
 
       <div className={css.body}>
         <div className={css.messages}>
+          {messages.length === 0 && (
+            <div className={css.suggestionsContainer}>
+              <p className={css.suggestionsTitle}>Suggested questions:</p>
+              <div className={css.suggestionsGrid}>
+                {SUGGESTED_QUESTIONS.map((q, idx) => (
+                  <button
+                    key={idx}
+                    className={css.suggestionBtn}
+                    onClick={() => handleSuggestionClick(q)}
+                    type="button"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           {messages.map((m, idx) => (
             <div
               key={idx}
@@ -103,15 +152,31 @@ export default function HealthChat({ isOpen, onRequestClose }) {
         </div>
 
         <form className={css.inputRow} onSubmit={handleSend}>
-          <label className={css.uploadLabel}>
-            <input
-              type="file"
-              accept="image/*"
-              onChange={e => setFile(e.target.files?.[0] || null)}
-              className={css.fileInput}
-            />
-            Upload photo
-          </label>
+          <div className={css.uploadContainer}>
+            <label className={css.uploadLabel}>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleFileSelect}
+                className={css.fileInput}
+              />
+              Upload photo
+            </label>
+            {file && (
+              <div className={css.fileInfo}>
+                <span className={css.fileName}>{file.name}</span>
+                <button
+                  type="button"
+                  className={css.removeFileBtn}
+                  onClick={handleRemoveFile}
+                  aria-label="Remove file"
+                >
+                  ×
+                </button>
+              </div>
+            )}
+          </div>
 
           <input
             type="text"
