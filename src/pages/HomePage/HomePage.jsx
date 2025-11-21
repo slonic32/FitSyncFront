@@ -1,6 +1,7 @@
 import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
 import WelcomeSection from '../../components/WelcomeSection/WelcomeSection';
 import css from './HomePage.module.css';
+import Footer from '../../components/Footer/Footer';
 
 function HomePage() {
   return (
@@ -9,6 +10,7 @@ function HomePage() {
         <WelcomeSection />
         <AdvantagesSection />
       </div>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import AdvantagesSection from '../../components/AdvantagesSection/AdvantagesSection';
 import css from './SignUpPage.module.css';
+import Footer from '../../components/Footer/Footer';
 
 export default function SignUpPage() {
     return (
@@ -11,6 +12,7 @@ export default function SignUpPage() {
                     <AdvantagesSection />
                 </div>
             </div>
+            <Footer />
         </main>
     );
 }
