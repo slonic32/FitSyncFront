@@ -27,7 +27,49 @@
     border-radius: 30px;
     background: var(--main-white);
     box-shadow: 0px 4px 50px 0px rgba(0, 0, 0, 0.1);
+    position: relative;
+    /* for popup positioning */
 }
+
+/* --- POPUP STYLES --- */
+.reviewPopup {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 8px);
+    width: 190px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    background: var(--main-white);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+    font-size: 10px;
+    line-height: 1.4;
+    z-index: 10;
+    animation: fadeInUp 0.2s ease-out;
+}
+
+.reviewName {
+    font-weight: 700;
+    color: var(--main);
+    margin-bottom: 4px;
+}
+
+.reviewText {
+    color: #5f6777;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- END POPUP STYLES --- */
 
 .item {
     height: 28px;
@@ -38,6 +80,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .imgPlaceholder {
@@ -53,18 +96,20 @@
     display: flex;
 }
 
-.item:nth-child(1) {
+/* Keep your overlapping avatars, but with class names
+   that match how we map them in JSX (item1, item2, item3) */
+.item1 {
     z-index: 3;
     position: relative;
 }
 
-.item:nth-child(2) {
+.item2 {
     z-index: 2;
     left: -10px;
     position: relative;
 }
 
-.item:nth-child(3) {
+.item3 {
     z-index: 1;
     left: -20px;
     position: relative;
@@ -75,7 +120,7 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 1.16;
-    margin-left: -18px;
+    margin-left: 4px;
 }
 
 span {
@@ -176,6 +221,11 @@ span {
         width: 47px;
     }
 
+    .reviewPopup {
+        width: 230px;
+        font-size: 11px;
+    }
+
     .customerText {
         font-size: 15px;
         line-height: 1.49;
@@ -250,4 +300,17 @@ span {
     .benefitsWrapper {
         bottom: 64px;
     }
+
+    .reviewPopup {
+        width: 260px;
+        font-size: 12px;
+    }
+
+    .avatarImg {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
 }
