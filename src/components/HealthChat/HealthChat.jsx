@@ -16,6 +16,125 @@ const SUGGESTED_QUESTIONS = [
   "How can I balance my meals throughout the day?",
 ];
 
+// Helper function to format text with markdown-style formatting
+function formatText(text) {
+  if (!text) return text;
+
+  // Process bold text (**text**)
+  const parts = [];
+  let lastIndex = 0;
+  const boldRegex = /\*\*([^*]+)\*\*/g;
+  let match;
+
+  while ((match = boldRegex.exec(text)) !== null) {
+    // Add text before the bold
+    if (match.index > lastIndex) {
+      parts.push({ type: 'text', content: text.substring(lastIndex, match.index) });
+    }
+    // Add bold text
+    parts.push({ type: 'bold', content: match[1] });
+    lastIndex = match.index + match[0].length;
+  }
+
+  // Add remaining text
+  if (lastIndex < text.length) {
+    parts.push({ type: 'text', content: text.substring(lastIndex) });
+  }
+
+  if (parts.length === 0) return text;
+
+  return parts.map((part, i) =>
+    part.type === 'bold' ? (
+      <strong key={i} className={css.boldText}>{part.content}</strong>
+    ) : (
+      <span key={i}>{part.content}</span>
+    )
+  );
+}
+
+// Helper function to format bot response text with proper structure
+function formatBotResponse(text) {
+  if (!text) return null;
+
+  const elements = [];
+  const lines = text.split('\n');
+  let currentParagraph = [];
+  let currentList = [];
+  let i = 0;
+
+  function flushParagraph() {
+    if (currentParagraph.length > 0) {
+      const paraText = currentParagraph.join(' ').trim();
+      if (paraText) {
+        elements.push(
+          <p key={i++} className={css.paragraph}>
+            {formatText(paraText)}
+          </p>
+        );
+      }
+      currentParagraph = [];
+    }
+  }
+
+  function flushList() {
+    if (currentList.length > 0) {
+      elements.push(
+        <ul key={i++} className={css.list}>
+          {currentList.map((item, idx) => (
+            <li key={idx}>{formatText(item)}</li>
+          ))}
+        </ul>
+      );
+      currentList = [];
+    }
+  }
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+
+    // Empty line - flush current blocks
+    if (!trimmed) {
+      flushList();
+      flushParagraph();
+      continue;
+    }
+
+    // Check for headers (###, ##, #)
+    if (/^###+\s/.test(trimmed)) {
+      flushList();
+      flushParagraph();
+      const headerText = trimmed.replace(/^###+\s/, '');
+      const level = trimmed.match(/^#+/)?.[0].length || 3;
+      elements.push(
+        <h3 key={i++} className={css.header} data-level={level}>
+          {formatText(headerText)}
+        </h3>
+      );
+      continue;
+    }
+
+    // Check for list items
+    const listMatch = trimmed.match(/^[-*•]\s(.+)$/) || trimmed.match(/^\d+[.)]\s(.+)$/);
+    if (listMatch) {
+      flushParagraph();
+      currentList.push(listMatch[1]);
+      continue;
+    }
+
+    // Regular text line
+    flushList();
+    if (trimmed) {
+      currentParagraph.push(trimmed);
+    }
+  }
+
+  // Flush any remaining content
+  flushList();
+  flushParagraph();
+
+  return elements.length > 0 ? elements : null;
+}
+
 export default function HealthChat({ isOpen, onRequestClose }) {
   const [messages, setMessages] = useState([]);
   const [pending, setPending] = useState(false);
@@ -142,9 +261,19 @@ export default function HealthChat({ isOpen, onRequestClose }) {
               className={m.role === "user" ? css.msgUser : css.msgBot}
             >
               <div className={css.bubble}>
-                {m.parts?.map((p, i) => (
-                  <p key={i}>{p.text}</p>
-                ))}
+                {m.role === "user" ? (
+                  // User messages: simple text
+                  m.parts?.map((p, i) => (
+                    <p key={i} className={css.userText}>{p.text}</p>
+                  ))
+                ) : (
+                  // Bot messages: formatted with structure
+                  m.parts?.map((p, i) => (
+                    <div key={i} className={css.botText}>
+                      {formatBotResponse(p.text)}
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           ))}
