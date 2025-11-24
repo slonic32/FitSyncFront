@@ -21,6 +21,9 @@ const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage.jsx"));
 const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage.jsx"));
 const TrackerPage = lazy(() => import("./pages/TrackerPage/TrackerPage.jsx"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage/ErrorPage.jsx"));
+const VerifyPage = lazy(() => import("./pages/VerifyPage/VerifyPage.jsx"));
+const ResetPage = lazy(() => import("./pages/ResetPage/ResetPage.jsx"));
+const LandingPage = lazy(() => import("./pages/LandingPage/LandingPage.jsx"));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -65,6 +68,10 @@ export default function App() {
               />
             }
           />
+
+          <Route path="/verify/:verificationToken" element={<VerifyPage />} />
+          <Route path="/reset/:resetToken" element={<ResetPage />} />
+          <Route path="/landing" element={<LandingPage />} />
 
           <Route
             path="/tracker"

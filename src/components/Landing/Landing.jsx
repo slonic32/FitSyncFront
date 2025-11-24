@@ -1,24 +1,31 @@
-import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { FaCheck, FaWater, FaChartLine, FaRobot, FaMobileAlt, FaSync } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import css from './LandingPage.module.css';
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  FaCheck,
+  FaWater,
+  FaChartLine,
+  FaRobot,
+  FaMobileAlt,
+  FaSync,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import css from "./Landing.module.css";
 
-export default function LandingPage() {
+export default function Landing() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <div className={css.landingPage}>
       {/* Navigation Bar */}
-      <nav className={`${css.navbar} ${scrolled ? css.navbarScrolled : ''}`}>
+      <nav className={`${css.navbar} ${scrolled ? css.navbarScrolled : ""}`}>
         <div className={css.navContainer}>
           <Link to="/" className={css.logo}>
             FITSYNC
@@ -31,21 +38,19 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className={css.hero}>
-        <video
-          className={css.heroVideo}
-          autoPlay
-          loop
-          muted
-          playsInline
-        >
-          <source src="/images/4761768-uhd_4096_2160_25fps.mp4" type="video/mp4" />
+        <video className={css.heroVideo} autoPlay loop muted playsInline>
+          <source
+            src="/images/4761768-uhd_4096_2160_25fps.mp4"
+            type="video/mp4"
+          />
         </video>
         <div className={css.heroOverlay}></div>
         <div className={css.heroContent}>
           <h1 className={css.heroTitle}>Your Fitness Journey,</h1>
           <h1 className={css.heroTitle}>Simplified</h1>
           <p className={css.heroSubtitle}>
-            Track your workouts, monitor hydration, and get AI-powered health insights—all in one place.
+            Track your workouts, monitor hydration, and get AI-powered health
+            insights—all in one place.
           </p>
           <div className={css.heroButtons}>
             <NavLink to="/signup" className={css.ctaPrimary}>
@@ -69,7 +74,8 @@ export default function LandingPage() {
               </div>
               <h3 className={css.featureTitle}>Water Tracking</h3>
               <p className={css.featureDescription}>
-                Monitor your daily hydration with smart reminders and detailed analytics.
+                Monitor your daily hydration with smart reminders and detailed
+                analytics.
               </p>
             </div>
             <div className={css.featureCard}>
@@ -78,7 +84,8 @@ export default function LandingPage() {
               </div>
               <h3 className={css.featureTitle}>Progress Analytics</h3>
               <p className={css.featureDescription}>
-                Visualize your fitness journey with comprehensive charts and insights.
+                Visualize your fitness journey with comprehensive charts and
+                insights.
               </p>
             </div>
             <div className={css.featureCard}>
@@ -87,7 +94,8 @@ export default function LandingPage() {
               </div>
               <h3 className={css.featureTitle}>AI Health Guide</h3>
               <p className={css.featureDescription}>
-                Get personalized nutrition advice and meal analysis powered by AI.
+                Get personalized nutrition advice and meal analysis powered by
+                AI.
               </p>
             </div>
             <div className={css.featureCard}>
@@ -114,7 +122,8 @@ export default function LandingPage() {
               </div>
               <h3 className={css.featureTitle}>Goal Tracking</h3>
               <p className={css.featureDescription}>
-                Set and achieve your fitness goals with personalized recommendations.
+                Set and achieve your fitness goals with personalized
+                recommendations.
               </p>
             </div>
           </div>
@@ -137,7 +146,8 @@ export default function LandingPage() {
               <div className={css.stepNumber}>2</div>
               <h3 className={css.stepTitle}>Set Your Goals</h3>
               <p className={css.stepDescription}>
-                Define your fitness objectives and customize your tracking preferences.
+                Define your fitness objectives and customize your tracking
+                preferences.
               </p>
             </div>
             <div className={css.step}>
@@ -185,9 +195,12 @@ export default function LandingPage() {
       {/* CTA Section */}
       <section className={css.ctaSection}>
         <div className={css.container}>
-          <h2 className={css.ctaTitle}>Ready to Transform Your Fitness Journey?</h2>
+          <h2 className={css.ctaTitle}>
+            Ready to Transform Your Fitness Journey?
+          </h2>
           <p className={css.ctaSubtitle}>
-            Join thousands of users who are already achieving their fitness goals.
+            Join thousands of users who are already achieving their fitness
+            goals.
           </p>
           <NavLink to="/signup" className={css.ctaButton}>
             Start Free Trial
@@ -197,4 +210,3 @@ export default function LandingPage() {
     </div>
   );
 }
-
