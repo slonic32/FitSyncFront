@@ -6,6 +6,7 @@ FitSync is an AI-powered fitness application designed to synchronize your health
 
 ## 📖 Table of Contents
 - About the Project
+  - Screenshots
 - Key Features
 - Tech Stack
 - API Documentation
@@ -16,19 +17,31 @@ FitSync is an AI-powered fitness application designed to synchronize your health
 - Deployment
 - Security
 - Contributing
-- Contact
+- Repositories
 
 ---
 
 ## 🧐 About the Project
 
 FitSync bridges the gap between raw fitness data and actionable health advice.  
-By leveraging Google’s Gemini AI, FitSync analyzes user metrics and provides personalized workout and nutrition recommendations.
+By leveraging Google's Gemini AI, FitSync analyzes user metrics and provides personalized workout and nutrition recommendations.
 
 - **Target Audience:** Fitness enthusiasts looking for AI-driven insights  
 - **Goal:** Deliver a seamless interface for tracking and improving health metrics  
 
-> **Note:** Add a screenshot or GIF of the application here to improve visual engagement.
+### 📸 Screenshots
+
+**Landing Page**
+![Landing Page](./public/images/landing.png)
+
+**Water Tracking**
+![Water Tracking](./public/images/tracking.png)
+
+**Analytics & Charts**
+![Analytics Chart](./public/images/chart.png)
+
+**AI Health Chat Assistant**
+![AI Chat Feature](./public/images/chat.png)
 
 ---
 
@@ -88,42 +101,9 @@ Use the interface to:
 
 ### Backend Installation
 
-#### 1. Clone the repository
+> **Note:** For backend installation instructions, see the [FitSyncBack repository](https://github.com/slonic32/FitSyncBack).
 
-```bash
-git clone https://github.com/slonic32/FitSyncBack.git
-cd FitSyncBack
-```
-
-#### 2. Configure Environment
-
-```bash
-cp .env.example .env
-```
-
-⚠️ Never commit .env files to version control.
-
-#### 3. Install Dependencies
-
-```bash
-npm install
-```
-
-#### 4. Run the Server
-
-- Development:
-
-```bash
-npm run dev
-```
-
-- Production:
-
-```bash
-npm run build
-npm run start
-```
-
+---
 
 ### Frontend Installation
 
@@ -159,19 +139,9 @@ npm run preview
 
 ### ☁️ Deployment
 
-#### Backend
-- Use Nginx as reverse proxy
-- HTTPS via Let's Encrypt
-- Keep server alive with PM2:
-
-```bash
-npm install -g pm2
-pm2 start dist/server.js
-```
-
-#### Frontend
-- Recommended hosting: Vercel
-- Push frontend repo to GitHub, import to Vercel, deploy (automatic CI/CD)
+- **Recommended hosting:** Vercel
+- **Setup:** Push frontend repo to GitHub, import to Vercel, deploy (automatic CI/CD)
+- **Note:** Make sure the backend is running and accessible before deploying
 
 ### 🔒 Security
 - Always use HTTPS in production
