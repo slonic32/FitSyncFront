@@ -12,7 +12,6 @@ export function setAuthHeader(token) {
 // remove JWT
 function clearAuthHeader() {
   axios.defaults.headers.common.Authorization = "";
-  //delete axios.defaults.headers.common.Authorization;?
 }
 
 export const register = createAsyncThunk(
@@ -20,8 +19,6 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("/users/register", credentials);
-      // add token to the HTTP header
-      setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
       if (error.response?.data?.message) {
@@ -38,10 +35,38 @@ export const login = createAsyncThunk(
     try {
       const res = await axios.post("/users/login", credentials);
 
-      // add token to the HTTP header
-
       setAuthHeader(res.data.token);
 
+      return res.data;
+    } catch (error) {
+      if (error.response?.data?.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const resendVerification = createAsyncThunk(
+  "auth/resendVerification",
+  async (email, thunkAPI) => {
+    try {
+      const res = await axios.post("/users/verify", { email });
+      return res.data;
+    } catch (error) {
+      if (error.response?.data?.message) {
+        return thunkAPI.rejectWithValue(error.response.data.message);
+      }
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const requestPasswordReset = createAsyncThunk(
+  "auth/requestPasswordReset",
+  async (email, thunkAPI) => {
+    try {
+      const res = await axios.post("/users/forgot", { email });
       return res.data;
     } catch (error) {
       if (error.response?.data?.message) {
@@ -55,7 +80,6 @@ export const login = createAsyncThunk(
 export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     await axios.get("/users/logout");
-    // remove  token from the HTTP header
     clearAuthHeader();
   } catch (error) {
     if (error.response?.data?.message) {
@@ -66,18 +90,14 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 });
 
 export const refresh = createAsyncThunk("auth/refresh", async (_, thunkAPI) => {
-  // Reading the token from the state via getState()
-
   const state = thunkAPI.getState();
   const persistedToken = state.auth.token;
 
   if (persistedToken === null) {
-    // If there is no token, exit without performing any request
     return thunkAPI.rejectWithValue("Unable to fetch user");
   }
 
   try {
-    // If there is a token, add it to the HTTP header and perform the request
     setAuthHeader(persistedToken);
 
     const res = await axios.get("/users/current");

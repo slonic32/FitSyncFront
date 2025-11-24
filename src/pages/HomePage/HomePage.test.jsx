@@ -1,17 +1,17 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+
 import HomePage from "./HomePage";
 
-jest.mock('../../components/LandingPage/LandingPage', () => () => <div>LandingPage</div>);
-jest.mock('../../components/Footer/Footer', () => () => <div>Footer</div>);
+jest.mock("../../components/WelcomeSection/WelcomeSection", () => () => (
+  <div>WelcomeSection</div>
+));
+jest.mock("../../components/AdvantagesSection/AdvantagesSection", () => () => (
+  <div>AdvantagesSection</div>
+));
 
 test("renders HomePage with child components", () => {
-  render(
-    <MemoryRouter>
-      <HomePage />
-    </MemoryRouter>
-  );
+  render(<HomePage />);
 
-  expect(screen.getByText("LandingPage")).toBeInTheDocument();
-  expect(screen.getByText("Footer")).toBeInTheDocument();
+  expect(screen.getByText("WelcomeSection")).toBeInTheDocument();
+  expect(screen.getByText("AdvantagesSection")).toBeInTheDocument();
 });

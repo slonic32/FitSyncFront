@@ -47,13 +47,13 @@ export default function SignUpForm() {
         dispatch(userRegister({ name, email, password }))
             .unwrap()
             .then(() => {
-                toast.success('Sign up successful! Welcome to FitSync! 🎉', {
-                    duration: 2000,
+                toast.success('Sign up successful! Check your email to verify your account ✅', {
+                    duration: 4000,
                 });
                 reset();
             })
             .catch((error) => {
-                toast.error('Oops! Failed to sign up', { duration: 4000 });
+                toast.error(error || 'Oops! Failed to sign up', { duration: 4000 });
             });
     };
 
